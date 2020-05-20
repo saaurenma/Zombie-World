@@ -50,6 +50,10 @@ public class AttackAction extends Action {
 				return actor + " misses " + target + ".";
 			}
 		}
+		
+		if (target instanceof Zombie) {
+			((Zombie) target).limbLoss();
+		}
 
 		int damage = weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";

@@ -38,7 +38,6 @@ public class Zombie extends ZombieActor {
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
 		Random rand = new Random();
-		//TODO if conditions for zombieArm status, when zombieArm is implemented.
 		if (zombieArms == 2 && rand.nextFloat() >= 0.5) {
 			return new IntrinsicWeapon(10, "punches");
 		}
@@ -62,6 +61,10 @@ public class Zombie extends ZombieActor {
 	 */
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+		Random rand = new Random();
+		if (rand.nextFloat() <= 0.10) {
+			System.out.println(name + " moans. Rauuuurgh!");
+		}
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
 			if (action != null)
@@ -84,5 +87,9 @@ public class Zombie extends ZombieActor {
 	 */
 	public int getZombieLegs() {
 		return zombieLegs;
+	}
+	
+	public void limbLoss() {
+		
 	}
 }
