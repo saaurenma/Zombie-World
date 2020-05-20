@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
@@ -29,7 +31,14 @@ public class Zombie extends ZombieActor {
 
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
-		return new IntrinsicWeapon(10, "punches");
+		Random rand = new Random();
+		//TODO if conditions for zombieArm status, when zombieArm is implemented.
+		if (rand.nextFloat() >= 0.5) {
+			return new IntrinsicWeapon(10, "punches");
+		}
+		else {
+			return new IntrinsicWeapon(15, "bites");
+		}
 	}
 
 	/**
