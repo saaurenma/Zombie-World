@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.DoNothingAction;
+import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
 
@@ -97,5 +98,17 @@ public class Zombie extends ZombieActor {
 		if (zombieArms > 0 && zombieLegs > 0) {
 			//TODO write in creation of arms and legs
 		}
+		if (zombieArms > 0 && zombieLegs == 0) {
+			new DropItemAction(new ZombieArm().execute(this, this.map));
+			//TODO need to access the map in this method
+		}
+		if (zombieArms == 0 && zombieLegs > 0) {
+			//TODO
+		}
+	}
+	
+	//TODO javadoc
+	public void fumbleWeapons() {
+		
 	}
 }
