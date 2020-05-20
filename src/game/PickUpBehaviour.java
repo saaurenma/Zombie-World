@@ -14,7 +14,7 @@ import edu.monash.fit2099.engine.Item;
  * @author Paul McIntosh
  *
  */
-public class PickUpBehavior implements Behaviour {
+public class PickUpBehaviour implements Behaviour {
 
 	/**
 	 * Returns a PickUpAction that picks up any Weapon at the actor's feet, and adds it to their inventory.

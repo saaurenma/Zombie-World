@@ -20,6 +20,7 @@ import edu.monash.fit2099.engine.IntrinsicWeapon;
 public class Zombie extends ZombieActor {
 	private Behaviour[] behaviours = {
 			new AttackBehaviour(ZombieCapability.ALIVE),
+			new PickUpBehaviour(),
 			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour()
 	};
