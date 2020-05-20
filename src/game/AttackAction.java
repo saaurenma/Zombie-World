@@ -37,8 +37,17 @@ public class AttackAction extends Action {
 
 		Weapon weapon = actor.getWeapon();
 
-		if (rand.nextBoolean()) {
-			return actor + " misses " + target + ".";
+		if (weapon.verb() == "bites") {
+			System.out.println("BITES ROLLCHECK");
+			if (rand.nextFloat() >= 0.35) {
+				return actor + " misses " + target + ".";
+			}
+		}
+		else {
+			System.out.println("HITS ROLLCHECK");
+			if (rand.nextBoolean()) {
+				return actor + " misses " + target + ".";
+			}
 		}
 
 		int damage = weapon.damage();
