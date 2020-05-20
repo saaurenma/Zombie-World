@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
@@ -23,8 +24,8 @@ public class PickUpBehaviour implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		//TODO checker for Zombie Arms status once zombieArms is implemented
-		ArrayList<Item> floorItems = new ArrayList<Item>();
-		for (Item i: floorItems) {
+		
+		for (Item i: map.locationOf(actor).getItems()) {
 			if (i.asWeapon() != null) {
 				return i.getPickUpAction();
 			}
