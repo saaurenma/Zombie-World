@@ -24,9 +24,14 @@ public class Zombie extends ZombieActor {
 			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour()
 	};
+	
+	private int zombieArms;
+	private int zombieLegs;
 
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
+		zombieArms = 2;
+		zombieLegs = 2;
 	}
 	
 
@@ -43,7 +48,8 @@ public class Zombie extends ZombieActor {
 	}
 
 	/**
-	 * If a Zombie can attack, it will.  If not, it will chase any human within 10 spaces.  
+	 * If a Zombie can attack, it will. If not, it will pick up any items at its feet.
+	 * If not, it will chase any human within 10 spaces.  
 	 * If no humans are close enough it will wander randomly.
 	 * 
 	 * @param actions list of possible Actions
@@ -59,5 +65,21 @@ public class Zombie extends ZombieActor {
 				return action;
 		}
 		return new DoNothingAction();	
+	}
+	
+	/**
+	 * Getter for zombieArms
+	 * @return int representing the number of arms attached to this Zombie.
+	 */
+	public int getZombieArms() {
+		return zombieArms;
+	}
+	
+	/**
+	 * Getter for zombieLegs
+	 * @return int representing the number of legs attached to this Zombie.
+	 */
+	public int getZombieLegs() {
+		return zombieLegs;
 	}
 }
