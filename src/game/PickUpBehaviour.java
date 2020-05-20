@@ -23,7 +23,11 @@ public class PickUpBehaviour implements Behaviour {
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		//TODO checker for Zombie Arms status once zombieArms is implemented
+		if (actor instanceof Zombie) {
+			if (((Zombie) actor).getZombieArms() == 0) {
+				return null;
+			}
+		}
 		
 		for (Item i: map.locationOf(actor).getItems()) {
 			if (i.asWeapon() != null) {
