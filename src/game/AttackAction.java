@@ -41,6 +41,9 @@ public class AttackAction extends Action {
 			if (rand.nextFloat() >= 0.35) {
 				return actor + " misses " + target + ".";
 			}
+			else {
+				actor.heal(5);
+			}
 		}
 		else {
 			if (rand.nextBoolean()) {
