@@ -89,7 +89,13 @@ public class Zombie extends ZombieActor {
 		return zombieLegs;
 	}
 	
+	//TODO javadoc
 	public void limbLoss() {
-		
+		if (zombieArms == 0 && zombieLegs == 0) {
+			return;
+		}
+		if (zombieArms > 0 && zombieLegs > 0) {
+			//TODO write in creation of arms and legs
+		}
 	}
 }

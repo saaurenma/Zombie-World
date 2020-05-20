@@ -50,10 +50,6 @@ public class AttackAction extends Action {
 				return actor + " misses " + target + ".";
 			}
 		}
-		
-		if (target instanceof Zombie) {
-			((Zombie) target).limbLoss();
-		}
 
 		int damage = weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
@@ -71,6 +67,10 @@ public class AttackAction extends Action {
 			map.removeActor(target);	
 			
 			result += System.lineSeparator() + target + " is killed.";
+		}
+		
+		if (target instanceof Zombie && target.isConscious()) {
+			((Zombie) target).limbLoss();
 		}
 
 		return result;
