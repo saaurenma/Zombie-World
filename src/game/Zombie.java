@@ -39,7 +39,10 @@ public class Zombie extends ZombieActor {
 	public IntrinsicWeapon getIntrinsicWeapon() {
 		Random rand = new Random();
 		//TODO if conditions for zombieArm status, when zombieArm is implemented.
-		if (rand.nextFloat() >= 0.5) {
+		if (zombieArms == 2 && rand.nextFloat() >= 0.5) {
+			return new IntrinsicWeapon(10, "punches");
+		}
+		if (zombieArms == 1 && rand.nextFloat() >= 0.75) {
 			return new IntrinsicWeapon(10, "punches");
 		}
 		else {
