@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.WeaponItem;
  *
  */
 public class ZombieLeg extends WeaponItem {
-	//TODO implement ZombieLimbWeapon enum capability, and add javadoc comments
+	// TODO implement ZombieLimbWeapon enum capability, and add javadoc comments
 
 	/**
 	 * Constructor for ZombieLeg
