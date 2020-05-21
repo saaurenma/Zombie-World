@@ -33,6 +33,15 @@ public class AttackAction extends Action {
 	}
 
 	@Override
+	/**
+	 * Perform the Attack Action.
+	 * Modified for Zombie unique properties; it includes lower hit chance but heal effect if the attack being made is a Zombie bite,
+	 * and a chance for the target to lose limbs if it is a Zombie.
+	 *
+	 * @param actor The actor performing the action.
+	 * @param map The map the actor is on.
+	 * @return a description of what happened that can be displayed to the user.
+	 */
 	public String execute(Actor actor, GameMap map) {
 
 		Weapon weapon = actor.getWeapon();

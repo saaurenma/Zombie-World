@@ -22,22 +22,43 @@ import edu.monash.fit2099.engine.Item;
  *
  */
 public class Zombie extends ZombieActor {
+	/**
+	 * List of behaviours the Zombie is capable of performing normally.
+	 */
 	private Behaviour[] behaviours = {
 			new AttackBehaviour(ZombieCapability.ALIVE),
 			new PickUpBehaviour(),
 			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour()
 	};
+	
+	/**
+	 * List of behaviours the Zombie is capable of performing with damaged or removed legs.
+	 */
 	private Behaviour[] leglessBehaviours = {
 			new AttackBehaviour(ZombieCapability.ALIVE),
 			new PickUpBehaviour(),
 	};
 	
+	/**
+	 * Toggle to determine if the Zombie can move on a given turn.
+	 */
 	private Boolean slowWalk = false;
 	
+	/**
+	 * Number of arms the Zombie has attached.
+	 */
 	private int zombieArms;
+	
+	/**
+	 * Number of legs the Zombie has attached.
+	 */
 	private int zombieLegs;
-
+	
+/**
+ * Constructor for the Zombie class.
+ * @param name The name of the Zombie.
+ */
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
 		zombieArms = 2;
@@ -46,6 +67,11 @@ public class Zombie extends ZombieActor {
 	
 
 	@Override
+	/**
+	 * Unique IntrinsicWeapon getter for Zombie.
+	 * Gives a chance of returning a Bite rather than a Punch.
+	 * The bite chance increases as the Zombie loses arms.
+	 */
 	public IntrinsicWeapon getIntrinsicWeapon() {
 		Random rand = new Random();
 		if (zombieArms == 2 && rand.nextFloat() >= 0.5) {
@@ -115,7 +141,11 @@ public class Zombie extends ZombieActor {
 		return zombieLegs;
 	}
 	
-	//TODO javadoc
+	/**
+	 * Determines which limb the Zombie loses, based on its remaining limbs.
+	 * Creates and drops a ZombieArm or ZombieLeg object, depending on the limb lost.
+	 * @param map the map where the current Zombie is
+	 */
 	public void limbLoss(GameMap map) {
 		if (zombieArms == 0 && zombieLegs == 0) {
 			return;
@@ -151,7 +181,11 @@ public class Zombie extends ZombieActor {
 		}
 	}
 	
-	//TODO javadoc.
+	/**
+	 * Drops the Zombie's weapons when it loses an arm. 
+	 * 50% chance if the Zombie has one arm, 100% if it has none.
+	 * @param map the map where the current Zombie is
+	 */
 	public void fumbleWeapons(GameMap map) {
 		Random rand = new Random();
 		if (zombieArms == 1) {
