@@ -38,7 +38,7 @@ public class AttackAction extends Action {
 		Weapon weapon = actor.getWeapon();
 
 		if (weapon.verb() == "bites") {
-			if (rand.nextFloat() >= 0.35) {
+			if (rand.nextFloat() >= 0.3) {
 				return actor + " misses " + target + ".";
 			}
 			else {
@@ -70,7 +70,9 @@ public class AttackAction extends Action {
 		}
 		
 		if (target instanceof Zombie && target.isConscious()) {
-			((Zombie) target).limbLoss(map);
+			if (rand.nextFloat() >= 0.75) {
+				((Zombie) target).limbLoss(map);
+			}
 		}
 
 		return result;

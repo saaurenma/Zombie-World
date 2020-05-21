@@ -28,6 +28,12 @@ public class Zombie extends ZombieActor {
 			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour()
 	};
+	private Behaviour[] leglessBehaviours = {
+			new AttackBehaviour(ZombieCapability.ALIVE),
+			new PickUpBehaviour(),
+	};
+	
+	private Boolean slowWalk = false;
 	
 	private int zombieArms;
 	private int zombieLegs;
@@ -66,15 +72,31 @@ public class Zombie extends ZombieActor {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		Random rand = new Random();
+		
 		if (rand.nextFloat() <= 0.10) {
 			System.out.println(name + " moans. Rauuuurgh!");
 		}
-		for (Behaviour behaviour : behaviours) {
-			Action action = behaviour.getAction(this, map);
-			if (action != null)
-				return action;
+		if (zombieLegs == 0) {
+			slowWalk = true;
 		}
-		return new DoNothingAction();	
+		if (zombieLegs == 1) {
+			slowWalk = !slowWalk;
+		}
+		if (slowWalk == false) {
+			for (Behaviour behaviour : behaviours) {
+				Action action = behaviour.getAction(this, map);
+				if (action != null)
+					return action;
+			} 
+		}
+		if (slowWalk == true) {
+			for (Behaviour behaviour : leglessBehaviours) {
+				Action action = behaviour.getAction(this, map);
+				if (action != null)
+					return action;
+			} 
+		}
+		return new DoNothingAction();
 	}
 	
 	/**
@@ -103,30 +125,40 @@ public class Zombie extends ZombieActor {
 			if (rand.nextBoolean()) {
 				new DropItemAction(new ZombieArm()).execute(this, map);
 				zombieArms -= 1;
+				System.out.println(name + " loses their arm!");
 				fumbleWeapons(map);
 				return;
 			}
 			else {
 				new DropItemAction(new ZombieLeg()).execute(this, map);
 				zombieLegs -= 1;
+				System.out.println(name + " loses their leg!");
 				return;
 			}
 		}
 		if (zombieArms > 0 && zombieLegs == 0) {
 			new DropItemAction(new ZombieArm()).execute(this, map);
 			zombieArms -= 1;
+			System.out.println(name + " loses their arm!");
 			fumbleWeapons(map);
 			return;
 		}
 		if (zombieArms == 0 && zombieLegs > 0) {
 			new DropItemAction(new ZombieLeg()).execute(this, map);
 			zombieLegs -= 1;
+			System.out.println(name + " loses their leg!");
 			return;
 		}
 	}
 	
 	//TODO javadoc.
 	public void fumbleWeapons(GameMap map) {
+		Random rand = new Random();
+		if (zombieArms == 1) {
+			if (rand.nextBoolean()) {
+				return;
+			}
+		}
 		ArrayList<Item> dropList = new ArrayList<Item>();
 		for (Item i: inventory) {
 			if (i.asWeapon() != null) {
@@ -135,6 +167,7 @@ public class Zombie extends ZombieActor {
 		}
 		for (Item j: dropList) {
 			j.getDropAction().execute(this, map);
+			System.out.println(name + " drops their " + j.toString());
 		}
 	}
 }

@@ -68,12 +68,6 @@ public class Application {
 		// place a simple weapon
 		gameMap.at(74, 20).addItem(new Plank());
 		
-		//TODO test plank at each zombie's feet
-		gameMap.at(30, 20).addItem(new Plank());
-		gameMap.at(30, 18).addItem(new Plank());
-		gameMap.at(50, 18).addItem(new Plank());
-		gameMap.at(62, 12).addItem(new Plank());
-		
 		// FIXME: Add more zombies!
 		gameMap.at(30, 20).addActor(new Zombie("Groan"));
 		gameMap.at(30,  18).addActor(new Zombie("Boo"));

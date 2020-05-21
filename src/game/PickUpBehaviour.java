@@ -19,6 +19,7 @@ public class PickUpBehaviour implements Behaviour {
 
 	/**
 	 * Returns a PickUpAction that picks up any Weapon at the actor's feet, and adds it to their inventory.
+	 * Returns null if the actor is a Zombie with no arms.
 	 * 
 	 */
 	@Override
