@@ -70,7 +70,7 @@ public class AttackAction extends Action {
 		}
 		
 		if (target instanceof Zombie && target.isConscious()) {
-			((Zombie) target).limbLoss();
+			((Zombie) target).limbLoss(map);
 		}
 
 		return result;

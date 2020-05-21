@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.Action;
@@ -9,6 +11,7 @@ import edu.monash.fit2099.engine.DoNothingAction;
 import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
+import edu.monash.fit2099.engine.Item;
 
 /**
  * A Zombie.
@@ -91,24 +94,47 @@ public class Zombie extends ZombieActor {
 	}
 	
 	//TODO javadoc
-	public void limbLoss() {
+	public void limbLoss(GameMap map) {
 		if (zombieArms == 0 && zombieLegs == 0) {
 			return;
 		}
 		if (zombieArms > 0 && zombieLegs > 0) {
-			//TODO write in creation of arms and legs
+			Random rand = new Random();
+			if (rand.nextBoolean()) {
+				new DropItemAction(new ZombieArm()).execute(this, map);
+				zombieArms -= 1;
+				fumbleWeapons(map);
+				return;
+			}
+			else {
+				new DropItemAction(new ZombieLeg()).execute(this, map);
+				zombieLegs -= 1;
+				return;
+			}
 		}
 		if (zombieArms > 0 && zombieLegs == 0) {
-			new DropItemAction(new ZombieArm().execute(this, this.map));
-			//TODO need to access the map in this method
+			new DropItemAction(new ZombieArm()).execute(this, map);
+			zombieArms -= 1;
+			fumbleWeapons(map);
+			return;
 		}
 		if (zombieArms == 0 && zombieLegs > 0) {
-			//TODO
+			new DropItemAction(new ZombieLeg()).execute(this, map);
+			zombieLegs -= 1;
+			return;
 		}
 	}
 	
-	//TODO javadoc
-	public void fumbleWeapons() {
-		
+	//TODO javadoc.
+	public void fumbleWeapons(GameMap map) {
+		ArrayList<Item> dropList = new ArrayList<Item>();
+		for (Item i: inventory) {
+			if (i.asWeapon() != null) {
+				dropList.add(i);
+			}
+		}
+		for (Item j: dropList) {
+			j.getDropAction().execute(this, map);
+		}
 	}
 }
