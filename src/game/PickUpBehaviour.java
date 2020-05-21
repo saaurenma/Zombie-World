@@ -1,16 +1,13 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 
 /**
- * A class that generates a PickUpBehaviorAction if the current actor is standing over
- * a weapon they can pick up.
+ * A class that generates a PickUpBehaviorAction if the current actor is
+ * standing over a weapon they can pick up.
  * 
  * @author Paul McIntosh
  *
@@ -18,8 +15,8 @@ import edu.monash.fit2099.engine.Item;
 public class PickUpBehaviour implements Behaviour {
 
 	/**
-	 * Returns a PickUpAction that picks up any Weapon at the actor's feet, and adds it to their inventory.
-	 * Returns null if the actor is a Zombie with no arms.
+	 * Returns a PickUpAction that picks up any Weapon at the actor's feet, and adds
+	 * it to their inventory. Returns null if the actor is a Zombie with no arms.
 	 * 
 	 */
 	@Override
@@ -29,8 +26,8 @@ public class PickUpBehaviour implements Behaviour {
 				return null;
 			}
 		}
-		
-		for (Item i: map.locationOf(actor).getItems()) {
+
+		for (Item i : map.locationOf(actor).getItems()) {
 			if (i.asWeapon() != null) {
 				return i.getPickUpAction();
 			}
