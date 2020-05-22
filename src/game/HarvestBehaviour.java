@@ -10,10 +10,17 @@ import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
-
+/***
+ * Implements HarvestBehaviour
+ * @author Saauren
+ *
+ */
 public class HarvestBehaviour implements Behaviour {
 
-	
+	/***
+	 * @param map the actor
+	 * @param map the gamemap
+	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		
