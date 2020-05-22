@@ -12,16 +12,18 @@ public class Corpse extends PortableItem {
 
 	public Corpse(String name, char displayChar) {
 		super(name, displayChar);
-		this.timeToRiseFromDead = getRandomInteger();
+		setTimeToRiseFromDead();
+		
 	}
 	
-	private int getRandomInteger(){
-		
+	
+	private void setTimeToRiseFromDead(){
 		Random rand = new Random();
 		int randNumber;
 		randNumber = Math.abs(rand.nextInt(5) + 1) + 5;
 		
-		return randNumber;
+		this.timeToRiseFromDead = randNumber;
+		
 	}
 	
 	@Override
