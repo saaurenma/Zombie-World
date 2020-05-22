@@ -7,9 +7,18 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
-
+/***
+ * A class defining FertilizeBehaviour
+ * 
+ * @author Saauren
+ *
+ */
 public class FertilizeBehaviour implements Behaviour {
-
+	
+	/**
+	 * Returns a FertilizeAction, passing the crop to be fertilized.
+	 * The crop to be fertilized is found after scanning that is done here
+	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		

@@ -6,7 +6,11 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
-
+/***
+ * Behaviour for Eating, is used by Humans and Player
+ * @author Saauren
+ *
+ */
 public class EatBehaviour implements Behaviour {
 	/***
 	 * Returns EatAction after checking if the Item is Food

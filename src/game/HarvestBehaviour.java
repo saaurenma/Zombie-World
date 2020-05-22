@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
@@ -26,7 +25,6 @@ public class HarvestBehaviour implements Behaviour {
 		
 		for (Exit e: exits) {
 			List<Item> items = locationOfActor.getItems();
-			System.out.println(items.size());
 			for (Item item: items) {
 				
 				if (!(item instanceof Crop)) {

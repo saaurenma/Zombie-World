@@ -5,9 +5,13 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.DoNothingAction;
 import edu.monash.fit2099.engine.GameMap;
-
+/***
+ * Class defining a Farmer
+ * @author Saauren
+ * 
+ */
 public class Farmer extends Human {
-	
+	// An array of behaviours that a Famer will use
 	private Behaviour[] behaviours = {
 			new SowBehaviour(),
 			new FertilizeBehaviour(),
@@ -15,8 +19,11 @@ public class Farmer extends Human {
 			new WanderBehaviour()
 	};
 	
-	protected Farmer(int hitPoints) {
-		super("farmer", 'F', hitPoints);
+	/*** 
+	 * Constructor for a Farmer object maintains same hitpoints as Human
+	 */
+	protected Farmer() {
+		super("Farmer", 'F', 50);
 		// TODO Auto-generated constructor stub
 	}
 
