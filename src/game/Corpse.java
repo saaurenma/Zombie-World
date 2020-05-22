@@ -2,8 +2,15 @@ package game;
 
 import java.util.Random;
 
+
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Class defining Corpse PortableItem
+ * 
+ * @author Saauren
+ *
+ */
 public class Corpse extends PortableItem {
 	
 	private int age = 0;
@@ -35,7 +42,9 @@ public class Corpse extends PortableItem {
 		if (this.timeToRiseFromDead == age) {
 			
 			currentLocation.removeItem(this);
-			currentLocation.addActor(new Zombie("Aaargh"));
+			if (!currentLocation.containsAnActor()) {
+				currentLocation.addActor(new Zombie("Aaargh"));
+			}
 			
 		}
 

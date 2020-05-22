@@ -21,11 +21,9 @@ public class SowBehaviour implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		
-		
 		List<Exit> exits = new ArrayList<Exit>(map.locationOf(actor).getExits());
 		Collections.shuffle(exits);
 		int randomNum = Math.abs(rand.nextInt() % 3) + 1;
-		
 		
 		for (Exit e: exits) {
 			Ground currentGround = e.getDestination().getGround();

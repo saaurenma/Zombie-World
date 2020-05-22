@@ -3,19 +3,43 @@ package game;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.Location;
 
 public class HarvestAction extends Action{
+	
+	Item cropToBeHarvested;
+	Location harvestLocation;
+
+
+	public HarvestAction(Item crop,Location location) {
+		
+		this.cropToBeHarvested = crop;
+		this.harvestLocation = location;
+
+	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		cropToBeHarvested.removeCapability(CropRipeUnripe.RIPE);
+		harvestLocation.removeItem(cropToBeHarvested);
+		if (actor instanceof Player) {
+			actor.addItemToInventory(new Food());
+		}
+		else {
+			harvestLocation.addItem(new Food());
+		}
+		
+		String description = actor + " harvested a crop.";
+		return description;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		// TODO Auto-generated method stub
-		return null;
+		String description = actor + " harvests a crop.";
+		return description;
 	}
 	
 

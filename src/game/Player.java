@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
+import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Menu;
@@ -31,4 +32,6 @@ public class Player extends Human {
 			return lastAction.getNextAction();
 		return menu.showMenu(this, actions, display);
 	}
+	
 }
+

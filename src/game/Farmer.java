@@ -11,6 +11,7 @@ public class Farmer extends Human {
 	private Behaviour[] behaviours = {
 			new SowBehaviour(),
 			new FertilizeBehaviour(),
+			new HarvestBehaviour(),
 			new WanderBehaviour()
 	};
 	
