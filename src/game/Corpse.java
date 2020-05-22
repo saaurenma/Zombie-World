@@ -8,7 +8,8 @@ public class Corpse extends PortableItem {
 	
 	private int age = 0;
 	private int timeToRiseFromDead;
-	
+	Random rand = new Random();
+
 
 	public Corpse(String name, char displayChar) {
 		super(name, displayChar);
@@ -18,7 +19,6 @@ public class Corpse extends PortableItem {
 	
 	
 	private void setTimeToRiseFromDead(){
-		Random rand = new Random();
 		int randNumber;
 		randNumber = Math.abs(rand.nextInt(5) + 1) + 5;
 		
@@ -29,9 +29,15 @@ public class Corpse extends PortableItem {
 	@Override
 	public void tick(Location currentLocation) {
 		super.tick(currentLocation);
-		
 		// increase day by 1
 		age++;
+		
+		if (this.timeToRiseFromDead == age) {
+			
+			currentLocation.removeItem(this);
+			currentLocation.addActor(new Zombie("Aaargh"));
+			
+		}
 
 	}
 	
