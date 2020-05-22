@@ -23,7 +23,7 @@ public class FertilizeAction extends Action {
 	@Override
 	public String menuDescription(Actor actor) {
 		
-		String description = actor + " fertlized the crop.";
+		String description = actor + " fertlizes a crop";
 		
 		return description;
 	}
