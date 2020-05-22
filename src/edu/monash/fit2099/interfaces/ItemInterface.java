@@ -6,7 +6,7 @@ package edu.monash.fit2099.interfaces;
  */
 public interface ItemInterface {
 	
-	public void fertilize();
+	public default void fertilize() {};
 
 }
  
