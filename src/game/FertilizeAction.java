@@ -16,12 +16,14 @@ public class FertilizeAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		unfertilizedCrop.fertilize();
+		String result = actor + " fertilized the crop.";
+		return result;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
 		
-		String description = actor + "fertlized the crop.";
+		String description = actor + " fertlized the crop.";
 		
 		return description;
 	}
