@@ -66,7 +66,7 @@ public class Application {
 		}
 		
 		//place random farmers
-		for (String name : humans) {
+		for (int i = 0; i < 3; i++) {
 			do {
 				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
 				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
