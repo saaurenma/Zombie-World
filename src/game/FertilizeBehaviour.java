@@ -18,10 +18,12 @@ public class FertilizeBehaviour implements Behaviour {
 		
 		for(int i = 0; i < items.size(); i++) {
 			Item currentItem = items.get(i);
-			if(currentItem.toString().equals("crop")) {
+			Item possibleCrop = currentItem;
+			if(possibleCrop instanceof Crop) {
 				if (currentItem.hasCapability(CropRipeUnripe.UNRIPE)){
 					return new FertilizeAction(currentItem);
-				}			
+				}
+				
 			}
 		}
 		return null;		
