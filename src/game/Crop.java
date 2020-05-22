@@ -8,10 +8,10 @@ public class Crop extends Item{
 	private int ripenTime;
 
 	public Crop(CropRipeUnripe isRipe) {
-		super("crop", 'C', false);
+		super("crop", '*', false);
 		this.addCapability(isRipe);
-		this.age = 0;
-		this.ripenTime = 20;
+		age = 0;
+		ripenTime = 20;
 	}
 	
 	public void fertilize() {
@@ -23,14 +23,15 @@ public class Crop extends Item{
 		else {
 			this.removeCapability(CropRipeUnripe.UNRIPE);
 			this.addCapability(CropRipeUnripe.RIPE);
+			
 		}
 	}
 	
 	@Override
 	public void tick(Location location) {
 		super.tick(location);
-		this.age++;
-		this.ripenTime--;
+		age++;
+		ripenTime--;
 	}
 
 }
