@@ -79,7 +79,7 @@ public class Zombie extends ZombieActor {
 	/**
 	 * If a Zombie can attack, it will. If not, it will pick up any items at its
 	 * feet. If not, it will chase any human within 10 spaces. If no humans are
-	 * close enough it will wander randomly.
+	 * close enough it will wander randomly. Every turn, it has a 10% chance to moan.
 	 * 
 	 * @param actions    list of possible Actions
 	 * @param lastAction previous Action, if it was a multiturn action
