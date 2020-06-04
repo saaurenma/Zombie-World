@@ -5,7 +5,6 @@ import java.util.List;
 
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.Exit; //TODO hacky, prune if other CAR TODO also fixxed.
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.World;
@@ -20,7 +19,7 @@ public class Application {
 	public static void main(String[] args) {
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree(), new Concrete(), new Wall(), new Fence(), new Door(), new Car());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree(), new Concrete(), new Wall(), new Fence(), new Door());
 		
 		List<String> map = Arrays.asList(
 		"................................................................................",
@@ -47,7 +46,7 @@ public class Application {
 		"........................................................................++.++...",
 		".........................................................................++++...",
 		"..........................................................................++....",
-		"...........................................C....................................");
+		"................................................................................");
 		GameMap gameMap = new GameMap(groundFactory, map );
 		world.addGameMap(gameMap);
 		
@@ -76,7 +75,7 @@ public class Application {
 		",,,,,,,,XXXXXXXXXXXXXXXXXXXXXXXXX,,,,,,,,,,,,,,,,,,,,X,,,,,,,,,,,,,,,,,,,,,,,X,,",
 		",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,=,,,,,,,,,,,,,,,,,,,,,,,X,,",
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX,,,,,,,,,,,,,,,,,,,,X,,,,,,,,,,,,,,,,,,,,,,,X,,",
-		",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,X,,,,,,,,,,C,,,,,,,,,X,,,,,,,,,,,,,,,,,,,,,,,X,,");
+		",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,X,,,,,,,,,,,,,,,,,,,,X,,,,,,,,,,,,,,,,,,,,,,,X,,");
 		GameMap gameMap2 = new GameMap(groundFactory, map2);
 		world.addGameMap(gameMap2);
 		
@@ -125,8 +124,9 @@ public class Application {
 		gameMap2.at(59, 9).addActor(new Zombie("Blargh"));
 		gameMap2.at(70, 14).addActor(new Zombie("Hurgh"));	
 		
-		//TODO adding map exits. This is a hack and I think it can be done better.
-		gameMap.at(43, 24).addExit(new Exit("Town", gameMap2.at(1, 1), "z"));
+		//adding a Car to each map
+		gameMap.at(42, 24).addItem(new Car(gameMap2.at(42, 24)));
+		gameMap2.at(42, 24).addItem(new Car(gameMap.at(42, 24)));
 		
 		world.run();
 	}

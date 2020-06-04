@@ -1,20 +1,17 @@
 package game;
 
-import edu.monash.fit2099.engine.Ground;
+import edu.monash.fit2099.engine.Actions;
+import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.Location;
+import edu.monash.fit2099.engine.MoveActorAction;
 
-/**
- * 
- * @author Paul McIntosh
- *
- * A class that represents a Car. Used to visually demark the inter-map travel location.
- */
-public class Car extends Ground {
+public class Car extends Item {
 
-	/**
-	 * Constructor class for the Car object.
-	 */
-	public Car() {
-		super('C');
+	public Car(Location location) {
+		super("Car", 'C', false);
+		Actions actions = new Actions(new MoveActorAction(location, "to the other map"));
+		//TODO get moveactoractions for each car in a location that is not this map.
+		allowableActions.add(actions);
 	}
 
 }
