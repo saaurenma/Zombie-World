@@ -5,6 +5,7 @@ import java.util.List;
 
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
+import edu.monash.fit2099.engine.Exit; //TODO hacky, prune if other CAR TODO also fixxed.
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.World;
@@ -76,7 +77,8 @@ public class Application {
 		",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,=,,,,,,,,,,,,,,,,,,,,,,,X,,",
 		"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX,,,,,,,,,,,,,,,,,,,,X,,,,,,,,,,,,,,,,,,,,,,,X,,",
 		",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,X,,,,,,,,,,C,,,,,,,,,X,,,,,,,,,,,,,,,,,,,,,,,X,,");
-
+		GameMap gameMap2 = new GameMap(groundFactory, map2);
+		world.addGameMap(gameMap2);
 		
 		Actor player = new Player("Player", '@', 100);
 		world.addPlayer(player, gameMap.at(42, 15));
@@ -108,13 +110,24 @@ public class Application {
 		// place a simple weapon
 		gameMap.at(74, 20).addItem(new Plank());
 		
-		// FIXME: Add more zombies!
+		// Adding Zombies to both maps
 		gameMap.at(30, 20).addActor(new Zombie("Groan"));
 		gameMap.at(30,  18).addActor(new Zombie("Boo"));
 		gameMap.at(10,  4).addActor(new Zombie("Uuuurgh"));
 		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
 		gameMap.at(62, 12).addActor(new Zombie("Aaargh"));	
+		
+		gameMap2.at(20, 16).addActor(new Zombie("Shambler"));
+		gameMap2.at(38, 10).addActor(new Zombie("Graurgh"));
+		gameMap2.at(43, 4).addActor(new Zombie("Zombo"));
+		gameMap2.at(46, 12).addActor(new Zombie("Romero"));
+		gameMap2.at(59, 9).addActor(new Zombie("Blargh"));
+		gameMap2.at(70, 14).addActor(new Zombie("Hurgh"));	
+		
+		//TODO adding map exits. This is a hack and I think it can be done better.
+		gameMap.at(43, 24).addExit(new Exit("Town", gameMap2.at(1, 1), "z"));
+		
 		world.run();
 	}
 }
