@@ -12,11 +12,6 @@ public class Shotgun extends Firearm {
 
 	public Shotgun() {
 		super("Shotgun", 'S');
-	}
-	
-	@Override
-	public Action shoot(Actor actor, Display display) {
-		Menu shotgunMenu = new Menu();
 		actions.add(new FireShotgunAction("South-West", "1"));
 		actions.add(new FireShotgunAction("South", "2"));
 		actions.add(new FireShotgunAction("South-East", "3"));
@@ -25,6 +20,11 @@ public class Shotgun extends Firearm {
 		actions.add(new FireShotgunAction("North-West", "7"));
 		actions.add(new FireShotgunAction("North", "8"));
 		actions.add(new FireShotgunAction("North-East", "9"));
+	}
+	
+	@Override
+	public Action shoot(Actor actor, Display display) {
+		Menu shotgunMenu = new Menu();
 		return shotgunMenu.showMenu(actor, actions, display);
 	}
 
