@@ -33,7 +33,7 @@ public class Player extends Human {
 			return lastAction.getNextAction();
 		for (Item item: inventory) {
 			if (item instanceof Firearm) {
-				actions.add(new ReadyFirearmAction((Firearm) item));
+				actions.add(new ReadyFirearmAction((Firearm) item, display));
 			}
 		}
 		return menu.showMenu(this, actions, display);
