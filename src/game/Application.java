@@ -128,6 +128,12 @@ public class Application {
 		gameMap.at(42, 24).addItem(new Car(gameMap2.at(42, 24)));
 		gameMap2.at(42, 24).addItem(new Car(gameMap.at(42, 24)));
 		
+		//adding firearms to the City map
+		gameMap2.at(12, 11).addItem(new Shotgun());
+		
+		//TODO test gun on map one, delete before final version
+		gameMap.at(42, 16).addItem(new Shotgun());
+		
 		world.run();
 	}
 }
