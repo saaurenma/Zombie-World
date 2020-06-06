@@ -60,7 +60,7 @@ public class FireShotgunAction extends Action {
 		} else if (hotkey == "6") {
 			for (int i = 1; i <= 3; i++) {
 				for (int j = i*-1; j <= i; j++) {
-					shotLocations.add(new Location(map, actorX-j, actorY+i));
+					shotLocations.add(new Location(map, actorX+i, actorY-j));
 				}
 			}
 		} else if (hotkey == "7") {
@@ -91,20 +91,14 @@ public class FireShotgunAction extends Action {
 
 		}
 		
-		String result = System.lineSeparator() + actor + " missed!";
+		String result = "";
 		//TODO large parts of below (damage and death) are lifted from attack action. Could be done better for DRY, if time permits.
 		
-		System.out.println(map.locationOf(actor).x() + " " + map.locationOf(actor).y() + "!");
-		
 		for (Location location: shotLocations) {
-			
-			System.out.println(location.x() + " " + location.y());
-			
-			
 			if (rand.nextFloat() >= 0.25 && location.getActor() != null) {
 				Actor target = location.getActor();
 				target.hurt(75);
-				result = System.lineSeparator() + actor + " blasts " + target + " for 75 damage.";
+				result += System.lineSeparator() + actor + " blasts " + target + " for 75 damage.";
 				if (!target.isConscious()) {
 					Corpse corpse = new Corpse("dead " + target, '%');
 					map.locationOf(target).addItem(corpse);
@@ -125,6 +119,9 @@ public class FireShotgunAction extends Action {
 					}
 				}
 			}
+		}
+		if (result == "") {
+			result = System.lineSeparator() + actor + " missed!";				
 		}
 		return menuDescription(actor) + result;
 	}
