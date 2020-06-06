@@ -24,28 +24,53 @@ public class FireShotgunAction extends Action {
 		int actorY = actorLocation.y();
 		ArrayList<Location> shotLocations = new ArrayList<Location>();
 		if (hotkey == "1") {
-			for (int i = 0; i == 3; i++) {
-				for (int j = 0; j == 3; j++) {
+			for (int i = 0; i <= 3; i++) {
+				for (int j = 0; j <= 3; j++) {
+					if (i==0 && j==0) {
+						continue;
+					}
+					shotLocations.add(new Location(map, actorX-i, actorY+j));
+				}
+			}
+		} else if (hotkey == "2") {
+
+		} else if (hotkey == "3") {
+			for (int i = 0; i <= 3; i++) {
+				for (int j = 0; j <= 3; j++) {
+					if (i==0&&j==0) {
+						continue;
+					}
+					else shotLocations.add(new Location(map, actorX+i, actorY+j));
+				}
+			}
+		} else if (hotkey == "4") {
+
+		} else if (hotkey == "6") {
+
+		} else if (hotkey == "7") {
+			for (int i = 0; i <= 3; i++) {
+				for (int j = 0; j <= 3; j++) {
 					if (i==0&&j==0) {
 						continue;
 					}
 					else shotLocations.add(new Location(map, actorX-i, actorY-j));
 				}
 			}
-		} else if (hotkey == "2") {
-
-		} else if (hotkey == "3") {
-
-		} else if (hotkey == "4") {
-
-		} else if (hotkey == "6") {
-
-		} else if (hotkey == "7") {
 
 		} else if (hotkey == "8") {
 
 		} else if (hotkey == "9") {
+			for (int i = 0; i <= 3; i++) {
+				for (int j = 0; j <= 3; j++) {
+					if (i==0&&j==0) {
+						continue;
+					}
+					else shotLocations.add(new Location(map, actorX+i, actorY-j));
+				}
+			}
 
+		}
+		for (Location location: shotLocations) {
 		}
 
 		return menuDescription(actor);
