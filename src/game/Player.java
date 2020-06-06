@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Menu;
 
 /**
@@ -30,6 +31,11 @@ public class Player extends Human {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+		for (Item item: inventory) {
+			if (item instanceof Firearm) {
+				actions.add(new ReadyFirearmAction((Firearm) item));
+			}
+		}
 		return menu.showMenu(this, actions, display);
 	}
 	

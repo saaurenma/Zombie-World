@@ -5,21 +5,21 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
 public class ReadyFirearmAction extends Action {
+	private Firearm firearm;
 
-	public ReadyFirearmAction() {
-		// TODO Auto-generated constructor stub
+	public ReadyFirearmAction(Firearm firearm) {
+		this.firearm = firearm;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		// TODO Auto-generated method stub
-		return "gun test execute";
+		firearm.shoot();
+		return menuDescription(actor);
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		// TODO Auto-generated method stub
-		return "gun test description";
+		return (actor + " readies the " + firearm);
 	}
 
 }
