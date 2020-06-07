@@ -43,6 +43,7 @@ public class FireSniperAction extends Action {
 	public String damageDealing(Actor actor, GameMap map, int damage) {
 		String result = "";
 		result += System.lineSeparator() + actor + " snipes " + target + " for " + damage + " damage.";
+		target.hurt(damage);
 		if (!target.isConscious()) {
 			Corpse corpse = new Corpse("dead " + target, '%');
 			map.locationOf(target).addItem(corpse);

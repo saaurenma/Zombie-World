@@ -13,6 +13,7 @@ import edu.monash.fit2099.engine.Menu;
 public class SniperRifle extends Firearm {
 	private int damageLevel = 0;
 	private Actor target;
+	private Menu sniperMenu = new Menu();
 
 	public SniperRifle() {
 		super("Sniper Rifle", 'R');
@@ -22,16 +23,22 @@ public class SniperRifle extends Firearm {
 	public Action shoot(Actor actor, Display display, GameMap map) {
 		//TODO fix casting by updating interfaces
 		if (target != null) {
-			//TODO already aiming
+			if (damageLevel == 1) {
+				Actions shootOrWait = new Actions(new AimSniperAction(target, this));
+				shootOrWait.add(new FireSniperAction(actor, target, damageLevel, this));
+				return sniperMenu.showMenu(actor, shootOrWait, display);
+			}
+			if (damageLevel == 2) {
+				return new FireSniperAction(actor, target, damageLevel, this);
+			}
 		} else {
 			HashMap<Action, Actor> targetHolder = new HashMap<Action, Actor>();
-			Menu sniperMenu = new Menu();
 			Actions aimActions = new Actions();
 			for (int xcord : map.getXRange()) {
 				for (int ycord : map.getYRange()) {
 					Actor potentialTarget = map.getActorAt(new Location(map, xcord, ycord));
 					if (potentialTarget != actor && potentialTarget != null) {
-						AimSniperAction potentialTargetAction = new AimSniperAction(potentialTarget);
+						AimSniperAction potentialTargetAction = new AimSniperAction(potentialTarget, this);
 						aimActions.add(potentialTargetAction);
 						targetHolder.put(potentialTargetAction, potentialTarget);
 					}
@@ -48,6 +55,11 @@ public class SniperRifle extends Firearm {
 	
 	public void clearTarget() {
 		target = null;
+		damageLevel = 0;
+	}
+	
+	public void aimUp() {
+		damageLevel += 1;
 	}
 
 }

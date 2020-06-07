@@ -6,13 +6,16 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class AimSniperAction extends Action {
 	private Actor target;
+	private SniperRifle thisGun;
 
-	public AimSniperAction(Actor target) {
+	public AimSniperAction(Actor target, SniperRifle thisGun) {
 		this.target = target;
+		this.thisGun = thisGun;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
+		thisGun.aimUp();
 		return menuDescription(actor);
 	}
 
