@@ -21,7 +21,6 @@ public class SniperRifle extends Firearm {
 
 	@Override
 	public Action shoot(Actor actor, Display display, GameMap map) {
-		//TODO fix casting by updating interfaces
 		if (target != null) {
 			if (damageLevel == 1) {
 				Actions shootOrWait = new Actions(new AimSniperAction(target, this));

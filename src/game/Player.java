@@ -28,15 +28,27 @@ public class Player extends Human {
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+		boolean rifleToggle = false;
+		SniperRifle rifleItem = null;
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 		for (Item item: inventory) {
 			if (item instanceof Firearm) {
 				actions.add(new ReadyFirearmAction((Firearm) item, display));
+				if (item instanceof SniperRifle) {
+					rifleItem = ((SniperRifle) item);
+					rifleToggle = true;
+				}
 			}
 		}
-		return menu.showMenu(this, actions, display);
+		Action playerAction = menu.showMenu(this, actions, display);
+		if (rifleToggle) {
+			if (!(playerAction instanceof AimSniperAction)) {
+				rifleItem.clearTarget();
+			}
+		}
+		return playerAction;
 	}
 	
 }
