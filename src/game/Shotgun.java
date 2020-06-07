@@ -13,14 +13,14 @@ public class Shotgun extends Firearm {
 
 	public Shotgun() {
 		super("Shotgun", 'S', 's');
-		actions.add(new FireShotgunAction("South-West", "1"));
-		actions.add(new FireShotgunAction("South", "2"));
-		actions.add(new FireShotgunAction("South-East", "3"));
-		actions.add(new FireShotgunAction("West", "4"));
-		actions.add(new FireShotgunAction("East", "6"));
-		actions.add(new FireShotgunAction("North-West", "7"));
-		actions.add(new FireShotgunAction("North", "8"));
-		actions.add(new FireShotgunAction("North-East", "9"));
+		actions.add(new FireShotgunAction("South-West", "1", this));
+		actions.add(new FireShotgunAction("South", "2", this));
+		actions.add(new FireShotgunAction("South-East", "3", this));
+		actions.add(new FireShotgunAction("West", "4", this));
+		actions.add(new FireShotgunAction("East", "6", this));
+		actions.add(new FireShotgunAction("North-West", "7", this));
+		actions.add(new FireShotgunAction("North", "8", this));
+		actions.add(new FireShotgunAction("North-East", "9", this));
 	}
 	
 	@Override

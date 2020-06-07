@@ -15,82 +15,89 @@ public class FireShotgunAction extends Action {
 	private String direction;
 	private String hotkey;
 	private Random rand = new Random();
+	private Shotgun thisGun;
 
-	public FireShotgunAction(String direction, String hotkey) {
+	public FireShotgunAction(String direction, String hotkey, Shotgun thisGun) {
 		this.direction = direction;
 		this.hotkey = hotkey;
+		this.thisGun = thisGun;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		Location actorLocation = map.locationOf(actor);
-		int actorX = actorLocation.x();
-		int actorY = actorLocation.y();
-		ArrayList<Location> shotLocations = new ArrayList<Location>();
-		if (hotkey == "1") {
-			for (int i = 0; i <= 3; i++) {
-				for (int j = 0; j <= 3; j++) {
-					if (i==0 && j==0) {
-						continue;
+		ArrayList<Location> shotLocations;
+		if (thisGun.checkAmmo(actor)) {
+			Location actorLocation = map.locationOf(actor);
+			int actorX = actorLocation.x();
+			int actorY = actorLocation.y();
+			shotLocations = new ArrayList<Location>();
+			if (hotkey == "1") {
+				for (int i = 0; i <= 3; i++) {
+					for (int j = 0; j <= 3; j++) {
+						if (i == 0 && j == 0) {
+							continue;
+						}
+						shotLocations.add(new Location(map, actorX - i, actorY + j));
 					}
-					shotLocations.add(new Location(map, actorX-i, actorY+j));
 				}
-			}
-		} else if (hotkey == "2") {
-			for (int i = 1; i <= 3; i++) {
-				for (int j = i*-1; j <= i; j++) {
-					shotLocations.add(new Location(map, actorX-j, actorY+i));
-				}
-			}
-		} else if (hotkey == "3") {
-			for (int i = 0; i <= 3; i++) {
-				for (int j = 0; j <= 3; j++) {
-					if (i==0&&j==0) {
-						continue;
+			} else if (hotkey == "2") {
+				for (int i = 1; i <= 3; i++) {
+					for (int j = i * -1; j <= i; j++) {
+						shotLocations.add(new Location(map, actorX - j, actorY + i));
 					}
-					else shotLocations.add(new Location(map, actorX+i, actorY+j));
 				}
-			}
-		} else if (hotkey == "4") {
-			for (int i = 1; i <= 3; i++) {
-				for (int j = i*-1; j <= i; j++) {
-					shotLocations.add(new Location(map, actorX-i, actorY-j));
-				}
-			}
-		} else if (hotkey == "6") {
-			for (int i = 1; i <= 3; i++) {
-				for (int j = i*-1; j <= i; j++) {
-					shotLocations.add(new Location(map, actorX+i, actorY-j));
-				}
-			}
-		} else if (hotkey == "7") {
-			for (int i = 0; i <= 3; i++) {
-				for (int j = 0; j <= 3; j++) {
-					if (i==0&&j==0) {
-						continue;
+			} else if (hotkey == "3") {
+				for (int i = 0; i <= 3; i++) {
+					for (int j = 0; j <= 3; j++) {
+						if (i == 0 && j == 0) {
+							continue;
+						} else
+							shotLocations.add(new Location(map, actorX + i, actorY + j));
 					}
-					else shotLocations.add(new Location(map, actorX-i, actorY-j));
 				}
-			}
+			} else if (hotkey == "4") {
+				for (int i = 1; i <= 3; i++) {
+					for (int j = i * -1; j <= i; j++) {
+						shotLocations.add(new Location(map, actorX - i, actorY - j));
+					}
+				}
+			} else if (hotkey == "6") {
+				for (int i = 1; i <= 3; i++) {
+					for (int j = i * -1; j <= i; j++) {
+						shotLocations.add(new Location(map, actorX + i, actorY - j));
+					}
+				}
+			} else if (hotkey == "7") {
+				for (int i = 0; i <= 3; i++) {
+					for (int j = 0; j <= 3; j++) {
+						if (i == 0 && j == 0) {
+							continue;
+						} else
+							shotLocations.add(new Location(map, actorX - i, actorY - j));
+					}
+				}
 
-		} else if (hotkey == "8") {
-			for (int i = 1; i <= 3; i++) {
-				for (int j = i*-1; j <= i; j++) {
-					shotLocations.add(new Location(map, actorX-j, actorY-i));
-				}
-			}
-		} else if (hotkey == "9") {
-			for (int i = 0; i <= 3; i++) {
-				for (int j = 0; j <= 3; j++) {
-					if (i==0&&j==0) {
-						continue;
+			} else if (hotkey == "8") {
+				for (int i = 1; i <= 3; i++) {
+					for (int j = i * -1; j <= i; j++) {
+						shotLocations.add(new Location(map, actorX - j, actorY - i));
 					}
-					else shotLocations.add(new Location(map, actorX+i, actorY-j));
 				}
-			}
+			} else if (hotkey == "9") {
+				for (int i = 0; i <= 3; i++) {
+					for (int j = 0; j <= 3; j++) {
+						if (i == 0 && j == 0) {
+							continue;
+						} else
+							shotLocations.add(new Location(map, actorX + i, actorY - j));
+					}
+				}
 
+			} 
 		}
-		
+		else {
+			return "The " + thisGun + " only clicks. It's empty!";
+		}
 		String result = "";
 		//TODO large parts of below (damage and death) are lifted from attack action. Could be done better for DRY, if time permits.
 		

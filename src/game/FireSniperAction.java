@@ -22,17 +22,21 @@ public class FireSniperAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		if (damageLevel == 0) {
-			thisGun.clearTarget();
-			return damageDealing(actor, map, 40);
-		} else if (damageLevel == 1) {
-			thisGun.clearTarget();
-			return damageDealing(actor, map, 80);
-		} else if (damageLevel == 2) {
-			thisGun.clearTarget();
-			return damageDealing(actor, map, 999);
+		if (thisGun.checkAmmo(actor)) {
+			if (damageLevel == 0) {
+				thisGun.clearTarget();
+				return damageDealing(actor, map, 40);
+			} else if (damageLevel == 1) {
+				thisGun.clearTarget();
+				return damageDealing(actor, map, 80);
+			} else if (damageLevel == 2) {
+				thisGun.clearTarget();
+				return damageDealing(actor, map, 999);
+			}
+			return menuDescription(actor);
+		} else {
+			return "The " + thisGun + " only clicks. It's empty!";
 		}
-		return menuDescription(actor);
 	}
 
 	@Override
