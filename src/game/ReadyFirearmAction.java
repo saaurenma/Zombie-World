@@ -16,7 +16,12 @@ public class ReadyFirearmAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		return firearm.shoot(actor, display, map).execute(actor, map);
+		if (firearm.checkAmmo(actor)) {
+			return firearm.shoot(actor, display, map).execute(actor, map);
+		}
+		else {
+			return "The " + firearm + " only clicks. It's empty!";
+		}
 	}
 
 	@Override
