@@ -14,7 +14,6 @@ import edu.monash.fit2099.engine.Menu;
 public class Player extends Human {
 
 	private Menu menu = new Menu();
-	private boolean currentlyAiming = false;
 
 	/**
 	 * Constructor.
@@ -38,10 +37,6 @@ public class Player extends Human {
 			}
 		}
 		return menu.showMenu(this, actions, display);
-	}
-	
-	public boolean getAimStatus() {
-		return currentlyAiming;
 	}
 	
 }

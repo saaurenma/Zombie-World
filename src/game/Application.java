@@ -133,6 +133,7 @@ public class Application {
 		
 		//TODO test gun on map one, delete before final version
 		gameMap.at(42, 16).addItem(new Shotgun());
+		gameMap.at(42, 14).addItem(new SniperRifle());
 		
 		world.run();
 	}
