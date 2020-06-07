@@ -8,13 +8,15 @@ import edu.monash.fit2099.engine.Item;
 
 public abstract class Firearm extends Item {
 
-	public Firearm(String name, char displayChar) {
+	public Firearm(String name, char displayChar, char ammoChar) {
 		super(name, displayChar, true);
 	}
 	
-//	public void checkAmmo() {
-	//TODO IMPLEMENT THIS
-//	}
+	public void checkAmmo(Actor actor) {
+		if (actor.getInventory().contains()) {
+			
+		}
+	}
 
 	public abstract Action shoot(Actor actor, Display display, GameMap map);
 }

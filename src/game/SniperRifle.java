@@ -16,7 +16,7 @@ public class SniperRifle extends Firearm {
 	private Menu sniperMenu = new Menu();
 
 	public SniperRifle() {
-		super("Sniper Rifle", 'R');
+		super("Sniper Rifle", 'R', 'r');
 	}
 
 	@Override

@@ -12,7 +12,7 @@ public class Shotgun extends Firearm {
 	private Actions actions = new Actions();
 
 	public Shotgun() {
-		super("Shotgun", 'S');
+		super("Shotgun", 'S', 's');
 		actions.add(new FireShotgunAction("South-West", "1"));
 		actions.add(new FireShotgunAction("South", "2"));
 		actions.add(new FireShotgunAction("South-East", "3"));
