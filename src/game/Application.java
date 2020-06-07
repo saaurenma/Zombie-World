@@ -130,10 +130,25 @@ public class Application {
 		
 		//adding firearms to the City map
 		gameMap2.at(12, 11).addItem(new Shotgun());
+		gameMap2.at(73, 3).addItem(new SniperRifle());
 		
-		//TODO test gun on map one, delete before final version
-		gameMap.at(42, 16).addItem(new Shotgun());
-		gameMap.at(42, 14).addItem(new SniperRifle());
+		//adding ammo to the City map
+		gameMap2.at(13, 12).addItem(new ShotgunAmmo());
+		gameMap2.at(9, 4).addItem(new ShotgunAmmo());
+		gameMap2.at(38, 17).addItem(new ShotgunAmmo());
+		gameMap2.at(63, 15).addItem(new ShotgunAmmo());
+		gameMap2.at(62, 8).addItem(new ShotgunAmmo());
+		gameMap2.at(47, 9).addItem(new ShotgunAmmo());
+		gameMap2.at(28, 13).addItem(new ShotgunAmmo());
+		gameMap2.at(75, 22).addItem(new ShotgunAmmo());
+		gameMap2.at(14, 20).addItem(new ShotgunAmmo());
+		gameMap2.at(39, 19).addItem(new ShotgunAmmo());
+		
+		gameMap2.at(74, 2).addItem(new RifleAmmo());
+		gameMap2.at(1, 1).addItem(new RifleAmmo());
+		gameMap2.at(58, 21).addItem(new RifleAmmo());
+		gameMap2.at(18, 12).addItem(new RifleAmmo());
+		gameMap2.at(57, 4).addItem(new RifleAmmo());
 		
 		world.run();
 	}

@@ -11,12 +11,13 @@ public abstract class Firearm extends Item {
 
 	public Firearm(String name, char displayChar, char ammoChar) {
 		super(name, displayChar, true);
+		this.ammoChar = ammoChar;
 	}
 	
 	public boolean checkAmmo(Actor actor) {
-		for ( Item item : actor.getInventory()) {
+		for (Item item : actor.getInventory()) {
 			if (item.getDisplayChar() == ammoChar) {
-				actor.getInventory().remove(item);
+				actor.removeItemFromInventory(item);
 				return true;
 			}
 		}
