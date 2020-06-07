@@ -51,5 +51,22 @@ public class Player extends Human {
 		return playerAction;
 	}
 	
+	@Override
+	/**
+	 * Do some damage to the current Actor.
+	 *
+	 * If the Actor's hitpoints go down to zero, it will be knocked out.
+	 *
+	 * @param points number of hitpoints to deduct.
+	 */
+	public void hurt(int points) {
+		hitPoints -= points;
+		for (Item item: inventory) {
+			if (item instanceof SniperRifle) {
+				((SniperRifle) item).clearTarget();
+			}
+		}
+	}
+	
 }
 
