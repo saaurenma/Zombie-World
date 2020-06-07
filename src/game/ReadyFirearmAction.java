@@ -16,8 +16,7 @@ public class ReadyFirearmAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		menuDescription(actor);
-		return firearm.shoot(actor, display).execute(actor, map);
+		return firearm.shoot(actor, display, map).execute(actor, map);
 	}
 
 	@Override

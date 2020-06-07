@@ -3,6 +3,7 @@ package game;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
+import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 
 public abstract class Firearm extends Item {
@@ -15,5 +16,5 @@ public abstract class Firearm extends Item {
 	//TODO IMPLEMENT THIS
 //	}
 
-	public abstract Action shoot(Actor actor, Display display);
+	public abstract Action shoot(Actor actor, Display display, GameMap map);
 }
