@@ -99,7 +99,6 @@ public class FireShotgunAction extends Action {
 			return "The " + thisGun + " only clicks. It's empty!";
 		}
 		String result = "";
-		//TODO large parts of below (damage and death) are lifted from attack action. Could be done better for DRY, if time permits.
 		
 		for (Location location: shotLocations) {
 			if (rand.nextFloat() >= 0.25 && location.getActor() != null) {

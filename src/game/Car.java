@@ -9,9 +9,7 @@ public class Car extends Item {
 
 	public Car(Location location) {
 		super("Car", 'C', false);
-		Actions actions = new Actions(new MoveActorAction(location, "to the other map"));
-		//TODO get moveactoractions for each car in a location that is not this map.
-		allowableActions.add(actions);
+		allowableActions.add(new Actions(new MoveActorAction(location, "to the other map")));
 	}
 
 }
