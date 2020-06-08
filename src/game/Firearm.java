@@ -14,7 +14,7 @@ public abstract class Firearm extends Item {
 		this.ammoChar = ammoChar;
 		this.addCapability(FirearmCapabilities.GUN);
 	}
-	
+
 	public boolean checkAmmo(Actor actor) {
 		for (Item item : actor.getInventory()) {
 			if (item.getDisplayChar() == ammoChar) {

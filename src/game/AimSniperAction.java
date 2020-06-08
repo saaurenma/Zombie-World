@@ -23,5 +23,5 @@ public class AimSniperAction extends Action {
 	public String menuDescription(Actor actor) {
 		return actor + " aims at " + target;
 	}
-	
+
 }

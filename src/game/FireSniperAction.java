@@ -43,7 +43,7 @@ public class FireSniperAction extends Action {
 	public String menuDescription(Actor actor) {
 		return actor + " snipes " + target;
 	}
-	
+
 	public String damageDealing(Actor actor, GameMap map, int damage) {
 		String result = "";
 		result += System.lineSeparator() + actor + " snipes " + target + " for " + damage + " damage.";

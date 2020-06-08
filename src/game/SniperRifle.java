@@ -52,12 +52,12 @@ public class SniperRifle extends Firearm {
 		}
 		return null;
 	}
-	
+
 	public void clearTarget() {
 		target = null;
 		damageLevel = 0;
 	}
-	
+
 	public void aimUp() {
 		damageLevel += 1;
 	}

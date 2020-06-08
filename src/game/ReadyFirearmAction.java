@@ -24,13 +24,13 @@ public class ReadyFirearmAction extends Action {
 	public String menuDescription(Actor actor) {
 		return (actor + " readies the " + firearm);
 	}
-	
+
 	@Override
 	public boolean stoppedAiming() {
 		if (this.firearm.hasCapability(FirearmCapabilities.AIMED)) {
 			return false;
-		}
-		else return true;
+		} else
+			return true;
 	}
 
 }
