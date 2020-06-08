@@ -12,6 +12,7 @@ public abstract class Firearm extends Item {
 	public Firearm(String name, char displayChar, char ammoChar) {
 		super(name, displayChar, true);
 		this.ammoChar = ammoChar;
+		this.addCapability(FirearmCapabilities.GUN);
 	}
 	
 	public boolean checkAmmo(Actor actor) {

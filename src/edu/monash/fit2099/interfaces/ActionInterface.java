@@ -5,5 +5,8 @@ package edu.monash.fit2099.interfaces;
  * or downcasting references in the game.   
  */
 public interface ActionInterface {
-
+	
+	public default boolean stoppedAiming() {
+		return true;
+	}
 }

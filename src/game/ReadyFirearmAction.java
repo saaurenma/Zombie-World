@@ -4,12 +4,13 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Item;
 
 public class ReadyFirearmAction extends Action {
-	private Firearm firearm;
+	private Item firearm;
 	private Display display;
 
-	public ReadyFirearmAction(Firearm firearm, Display display) {
+	public ReadyFirearmAction(Item firearm, Display display) {
 		this.firearm = firearm;
 		this.display = display;
 	}
@@ -22,6 +23,14 @@ public class ReadyFirearmAction extends Action {
 	@Override
 	public String menuDescription(Actor actor) {
 		return (actor + " readies the " + firearm);
+	}
+	
+	@Override
+	public boolean stoppedAiming() {
+		if (this.firearm.hasCapability(FirearmCapabilities.AIMED)) {
+			return false;
+		}
+		else return true;
 	}
 
 }

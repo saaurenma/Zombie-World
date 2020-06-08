@@ -150,6 +150,10 @@ public class Application {
 		gameMap2.at(18, 12).addItem(new RifleAmmo());
 		gameMap2.at(57, 4).addItem(new RifleAmmo());
 		
+		//Test items
+		gameMap.at(42, 14).addItem(new SniperRifle());
+		gameMap.at(42, 14).addItem(new RifleAmmo());
+		
 		world.run();
 	}
 }

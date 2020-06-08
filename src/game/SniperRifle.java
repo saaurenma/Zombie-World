@@ -17,6 +17,7 @@ public class SniperRifle extends Firearm {
 
 	public SniperRifle() {
 		super("Sniper Rifle", 'R', 'r');
+		this.addCapability(FirearmCapabilities.AIMED);
 	}
 
 	@Override

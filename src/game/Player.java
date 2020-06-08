@@ -28,24 +28,20 @@ public class Player extends Human {
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-		boolean rifleToggle = false;
-		SniperRifle rifleItem = null;
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 		for (Item item: inventory) {
-			if (item instanceof Firearm) {
-				actions.add(new ReadyFirearmAction((Firearm) item, display));
-				if (item instanceof SniperRifle) {
-					rifleItem = ((SniperRifle) item);
-					rifleToggle = true;
+			if (item.hasCapability(FirearmCapabilities.GUN)) {
+				actions.add(new ReadyFirearmAction(item, display));
+				if (item.hasCapability(FirearmCapabilities.AIMED)) {
 				}
 			}
 		}
 		Action playerAction = menu.showMenu(this, actions, display);
-		if (rifleToggle) {
-			if (!(playerAction instanceof AimSniperAction)) {
-				rifleItem.clearTarget();
+		if (playerAction.stoppedAiming()) {
+			for (Item item: inventory) {
+				item.clearTarget();
 			}
 		}
 		return playerAction;
@@ -56,14 +52,15 @@ public class Player extends Human {
 	 * Do some damage to the current Actor.
 	 *
 	 * If the Actor's hitpoints go down to zero, it will be knocked out.
+	 * This override to the Player class also clears any held Sniper Rifle aiming on damage taken.
 	 *
 	 * @param points number of hitpoints to deduct.
 	 */
 	public void hurt(int points) {
 		hitPoints -= points;
 		for (Item item: inventory) {
-			if (item instanceof SniperRifle) {
-				((SniperRifle) item).clearTarget();
+			if (item.hasCapability(FirearmCapabilities.AIMED)) {
+				item.clearTarget();
 			}
 		}
 	}
