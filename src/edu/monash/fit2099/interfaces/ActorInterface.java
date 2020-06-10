@@ -6,6 +6,9 @@ package edu.monash.fit2099.interfaces;
  */
 
 public interface ActorInterface {
-
 	
+	// returns the number of turns the actor has gone through
+	// used to avoid downcasting
+	public default int getTurns() {
+		return 0;};
 }
