@@ -20,7 +20,15 @@ public class ChantAction extends Action{
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		
-		// things here
+		String[] zombieNames = {"Juaarg", "Baaaah", "Blazer", "Plunger", "Slumper"};
+
+		
+		for (int i = 0; i <= 4; i++) {
+			Zombie newZombie = new Zombie(zombieNames[i]);
+			Location newLocation = spawnLocations.get(i);
+			
+			map.addActor(newZombie, newLocation);
+			}
 		
 		String result = actor + " chanted, 5 zombies spawned!";
 		return result;
