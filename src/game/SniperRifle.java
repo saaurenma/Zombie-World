@@ -38,9 +38,11 @@ public class SniperRifle extends Firearm {
 				for (int ycord : map.getYRange()) {
 					Actor potentialTarget = map.getActorAt(new Location(map, xcord, ycord));
 					if (potentialTarget != actor && potentialTarget != null) {
-						AimSniperAction potentialTargetAction = new AimSniperAction(potentialTarget, this);
-						aimActions.add(potentialTargetAction);
-						targetHolder.put(potentialTargetAction, potentialTarget);
+						if (potentialTarget.hasCapability(ZombieCapability.UNDEAD)) {
+							AimSniperAction potentialTargetAction = new AimSniperAction(potentialTarget, this);
+							aimActions.add(potentialTargetAction);
+							targetHolder.put(potentialTargetAction, potentialTarget);
+						}
 					}
 				}
 			}
