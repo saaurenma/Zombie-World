@@ -13,7 +13,7 @@ public class MamboMarie extends ZombieActor{
 	// use an array to store WanderBehaviour, since we may want to add more
 	// in the future. Also ensures consistency with the other ZombieActor child
 	// classes
-	private Behaviour[] behaviours = {new WanderBehaviour(), new ChantBehaviour()};
+	private Behaviour[] behaviours = {new WanderBehaviour(), new ChantBehaviour(), new MarieSpawnBehaviour()};
 	
 	/**
 	 * Constructor for MamboMarie, starts with 30 more hitpoints than a
@@ -33,7 +33,7 @@ public class MamboMarie extends ZombieActor{
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		marieTurns++;
-		
+				
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
 			if (action != null)
