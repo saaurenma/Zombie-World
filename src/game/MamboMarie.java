@@ -19,11 +19,25 @@ public class MamboMarie extends ZombieActor{
 	 * Constructor for MamboMarie, starts with 30 more hitpoints than a
 	 * normal zombie
 	 */
-	public MamboMarie() {
+	public MamboMarie(boolean visible) {
 		super("Mambo Marie", 'M', 130, ZombieCapability.UNDEAD);
+		
+		this.setVisibility(visible);
 		
 	}
 	
+	public void setVisibility(boolean visible) {
+		
+		if (visible == false) {
+			this.displayChar = '.';
+		}
+		
+		else if (visible == true) {
+			this.displayChar = 'M';
+			
+		}
+		
+	}
 	
 	public int getTurns() {
 		return marieTurns;
@@ -35,7 +49,9 @@ public class MamboMarie extends ZombieActor{
 		marieTurns++;
 				
 		for (Behaviour behaviour : behaviours) {
+			
 			Action action = behaviour.getAction(this, map);
+			System.out.println(action);
 			if (action != null)
 				return action;
 		}
