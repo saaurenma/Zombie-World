@@ -72,7 +72,12 @@ public class AttackAction extends Action {
 			for (Action drop : dropActions)
 				drop.execute(target, map);
 			map.removeActor(target);
-
+			
+			if (target instanceof Player || !checkIfHumansAlive(map)) {
+				actor.addCapability(WinStateCapability.LOSE);
+			}
+			
+			
 			result += System.lineSeparator() + target + " is killed.";
 		}
 
@@ -84,9 +89,34 @@ public class AttackAction extends Action {
 
 		return result;
 	}
+	
+	private boolean checkIfHumansAlive(GameMap map) {
+		int xMax = map.getXRange().max();
+		int yMax = map.getYRange().max();
+		
+		for (int x = map.getXRange().min(); x<xMax; x++) {
+			for (int y = map.getYRange().min(); y<yMax; y++) {
+				
+				if (!map.isAnActorAt(map.at(x, y))) {
+					continue;
+				}
+				
+				Actor actorAtLocation = (map.at(x, y)).getActor();
+				if ((actorAtLocation instanceof Human) && ((map.at(x, y)).getActor().hasCapability(ZombieCapability.ALIVE))){
+					return true;
+				}
+			}
+		}
+		
+		return false;
+		
+		
+	}
+
 
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target;
 	}
 }
+	
