@@ -28,7 +28,7 @@ public class ChantAction extends Action{
 			Location newLocation = spawnLocations.get(i);
 			
 			map.addActor(newZombie, newLocation);
-			}
+		}
 		
 		String result = actor + " chanted, 5 zombies spawned!";
 		return result;

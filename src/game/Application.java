@@ -95,6 +95,7 @@ public class Application {
 			gameMap.at(x,  y).addActor(new Human(name));	
 		}
 		
+		
 		//place random farmers
 		for (int i = 0; i < 3; i++) {
 			do {
@@ -149,7 +150,7 @@ public class Application {
 		gameMap2.at(58, 21).addItem(new RifleAmmo());
 		gameMap2.at(18, 12).addItem(new RifleAmmo());
 		gameMap2.at(57, 4).addItem(new RifleAmmo());
-		
+				
 		world.run();
 	}
 }
