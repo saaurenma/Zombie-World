@@ -8,7 +8,8 @@ import edu.monash.fit2099.engine.Location;
 public class MarieSpawnAction extends Action{
 	
 	Location spawnLocation;
-
+	
+	
 	public MarieSpawnAction(Location randEdgeLocation) {
 		this.spawnLocation = randEdgeLocation;
 	}
@@ -17,7 +18,18 @@ public class MarieSpawnAction extends Action{
 	public String execute(Actor actor, GameMap map) {		
 		
 		String result = actor + " SPAWNED IN MAP! KILL HER!";
-		map.addActor(actor, spawnLocation);
+		
+		if (map.contains(actor)) {
+			if (actor.getTurns() % 30 == 0) {
+				map.removeActor(actor);
+			}
+		}
+		else if (!map.contains(actor)){
+			
+			map.addActor(actor, spawnLocation);
+			
+		}
+		
 		
 		return result;
 	}

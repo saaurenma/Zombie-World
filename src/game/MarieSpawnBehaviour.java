@@ -13,14 +13,13 @@ public class MarieSpawnBehaviour implements Behaviour {
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		if (!map.contains(actor)) {
-			double chance = Math.random();
+		double chance = Math.random();
+		
+		if (chance < 0.05) {
 			
-			if (chance < 0.05) {
-				
-				return new MarieSpawnAction(getRandEdgeLocation(map));
-			}
+			return new MarieSpawnAction(getRandEdgeLocation(map));
 		}
+
 		
 		return null;
 	}
