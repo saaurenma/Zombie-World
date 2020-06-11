@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.Action;
@@ -15,16 +16,36 @@ public class MarieSpawnBehaviour implements Behaviour {
 		if (!map.contains(actor)) {
 			double chance = Math.random();
 			
-			if (chance < 0.5) {
-				map.addActor(actor,);
+			if (chance < 0.05) {
+				
+				return new MarieSpawnAction(getRandEdgeLocation(map));
 			}
-			
 		}
+		
+		return null;
 	}
 	
 	
-	private ArrayList<int> getSpawnLocations(){
-		ArrayList<Location> locations = new 
+	private Location getRandEdgeLocation(GameMap map){
+		
+		boolean isValidLocation = false;
+		Location location = null;
+
+		
+		while (!isValidLocation) {
+		
+			int xEdge = map.getXRange().min() + (int)(Math.random() * ((map.getXRange().max() -  map.getXRange().min()) + 1));
+			int yEdge = map.getYRange().min();
+			location = new Location(map,xEdge,yEdge);
+			
+			if (!map.isAnActorAt(location)) {
+				isValidLocation = true;
+			}
+		
+		}
+		
+		
+		return location;
 	}
 	
 
