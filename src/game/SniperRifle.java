@@ -10,11 +10,28 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.Menu;
 
+/**
+ * Firearm subclass, represents the Sniper Rifle. Deals high damage to a single target, damage increases based on time spent aiming..
+ * @author Paul McIntosh
+ *
+ */
 public class SniperRifle extends Firearm {
+	/**
+	 * Represents the current level of aiming on target for the Rifle. Damage applied to the target scales up with this integer.
+	 */
 	private int damageLevel = 0;
+	/**
+	 * The target being fired at by the rifle.
+	 */
 	private Actor target;
+	/**
+	 * Instantiation of the Menu class, used to select a target to aim at.
+	 */
 	private Menu sniperMenu = new Menu();
 
+	/**
+	 * Constructor class.
+	 */
 	public SniperRifle() {
 		super("Sniper Rifle", 'R', 'r');
 		this.addCapability(FirearmCapabilities.AIMED);
@@ -55,11 +72,17 @@ public class SniperRifle extends Firearm {
 		return null;
 	}
 
+	/**
+	 * Clears the Sniper Rifle's current target, and resests the damage level.
+	 */
 	public void clearTarget() {
 		target = null;
 		damageLevel = 0;
 	}
 
+	/**
+	 * Increases the current damage level by one.
+	 */
 	public void aimUp() {
 		damageLevel += 1;
 	}

@@ -10,13 +10,37 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Action subclass used to fire a Shotgun, deals area damage.
+ * @author Paul McIntosh
+ *
+ */
 public class FireShotgunAction extends Action {
 
+	/**
+	 * The direction that the shotgun is to be fired in.
+	 */
 	private String direction;
+	/**
+	 * The hotkey representing the direction of fire.
+	 */
 	private String hotkey;
+	/**
+	 * Random number generator.
+	 */
 	private Random rand = new Random();
+	/**
+	 * The Shotgun item this action is being used to fire.
+	 */
 	private Shotgun thisGun;
 
+	/**
+	 * Constructor class
+	 * 
+	 * @param direction The direction that the shotgun is to be fired in.
+	 * @param hotkey The hotkey representing the direction of fire.
+	 * @param thisGun The Shotgun item this action is being used to fire.
+	 */
 	public FireShotgunAction(String direction, String hotkey, Shotgun thisGun) {
 		this.direction = direction;
 		this.hotkey = hotkey;

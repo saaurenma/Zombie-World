@@ -7,10 +7,21 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Menu;
 
+/**
+ * Firearm subclass, represents the Shotgun. Deals area of affect damage over three tiles in a chosen area.
+ * @author Paul McIntosh
+ *
+ */
 public class Shotgun extends Firearm {
 	
+	/**
+	 * Custom container used to store Action subclasses.
+	 */
 	private Actions actions = new Actions();
 
+	/**
+	 * Constructor class.
+	 */
 	public Shotgun() {
 		super("Shotgun", 'S', 's');
 		actions.add(new FireShotgunAction("South-West", "1", this));
