@@ -8,6 +8,7 @@ public class QuitAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
+		
 		String description = " quit the game.";
 		return description;
 	}

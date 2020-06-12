@@ -1,5 +1,6 @@
 package game;
 
+import edu.monash.fit2099.demo.mars.KickAction;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
@@ -44,6 +45,7 @@ public class Player extends Human {
 		}
 		return playerAction;
 	}
+	
 
 	@Override
 	/**
