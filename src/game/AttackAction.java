@@ -76,6 +76,10 @@ public class AttackAction extends Action {
 			if (target instanceof Player || !checkIfHumansAlive(map)) {
 				actor.addCapability(WinStateCapability.LOSE);
 			}
+			else if (!checkIfZombiesAlive(map)) {
+				actor.addCapability(WinStateCapability.WIN);
+			}
+			
 			
 			
 			result += System.lineSeparator() + target + " is killed.";
@@ -109,8 +113,28 @@ public class AttackAction extends Action {
 		}
 		
 		return false;
+	}
+	
+	
+	private boolean checkIfZombiesAlive(GameMap map) {
+		int xMax = map.getXRange().max();
+		int yMax = map.getYRange().max();
 		
+		for (int x = map.getXRange().min(); x<xMax; x++) {
+			for (int y = map.getYRange().min(); y<yMax; y++) {
+				
+				if (!map.isAnActorAt(map.at(x, y))) {
+					continue;
+				}
+				
+				Actor actorAtLocation = (map.at(x, y)).getActor();
+				if ((actorAtLocation instanceof Zombie) && ((map.at(x, y)).getActor().hasCapability(ZombieCapability.UNDEAD))){
+					return true;
+				}
+			}
+		}
 		
+		return false;
 	}
 
 

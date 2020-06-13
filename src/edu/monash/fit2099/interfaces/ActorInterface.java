@@ -15,4 +15,6 @@ public interface ActorInterface {
 	public default void setVisibility(boolean visible) {};
 	public default boolean getVisible() {
 		return false;};
+		
+		public default void setTurns(int turns) {};
 }

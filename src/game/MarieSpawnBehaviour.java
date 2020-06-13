@@ -17,7 +17,7 @@ public class MarieSpawnBehaviour implements Behaviour {
 		
 		
 				
-		if (!actor.getVisible() && (chance < 0.05)) {
+		if (!actor.getVisible() && (chance < 1)) {
 			return new MarieSpawnAction(getRandEdgeLocation(map),true);
 		}
 		

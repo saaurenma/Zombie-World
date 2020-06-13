@@ -18,17 +18,19 @@ public class MarieSpawnAction extends Action{
 
 	@Override
 	public String execute(Actor actor, GameMap map) {		
-		
-		String result = actor + " SPAWNED IN MAP! KILL HER!";
+		String result;
 		
 		if (!this.toSpawn) {
 			actor.setVisibility(false);
 			map.moveActor(actor, spawnLocation);
+			result = actor + " vanished... ";
+			actor.setTurns(0);
 		}
 		
 		else {
 			actor.setVisibility(true);
 			map.moveActor(actor, spawnLocation);
+			result = actor + " SPAWNED IN MAP! KILL HER!";
 		}
 		
 		return result;

@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.DoNothingAction;
 import edu.monash.fit2099.engine.GameMap;
 
-public class MamboMarie extends ZombieActor{
+public class MamboMarie extends Zombie{
 	
 	private int marieTurns = 0;
 	
@@ -27,7 +27,7 @@ public class MamboMarie extends ZombieActor{
 	private boolean visible;
 	
 	public MamboMarie(boolean visible) {
-		super("Mambo Marie", 'M', 130, ZombieCapability.UNDEAD);
+		super("Mambo Marie", 'M', 130);
 		
 		this.setVisibility(visible);
 		
@@ -53,6 +53,10 @@ public class MamboMarie extends ZombieActor{
 	}
 
 	
+	public void setTurns(int turns) {
+		marieTurns = turns; 
+	}
+	
 	public int getTurns() {
 		return marieTurns;
 	}
@@ -61,6 +65,7 @@ public class MamboMarie extends ZombieActor{
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		marieTurns++;		
+
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
 			if (action != null)

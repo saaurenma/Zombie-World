@@ -1,5 +1,7 @@
 package game;
 
+import java.util.List;
+
 import edu.monash.fit2099.demo.mars.KickAction;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
@@ -29,6 +31,8 @@ public class Player extends Human {
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+		
+		actions.add(new QuitAction());
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -46,7 +50,6 @@ public class Player extends Human {
 		return playerAction;
 	}
 	
-
 	@Override
 	/**
 	 * Do some damage to the current Actor.
