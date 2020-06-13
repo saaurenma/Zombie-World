@@ -38,6 +38,9 @@ public class MarieSpawnAction extends Action{
 		}
 		
 		else {
+			// when moving actor, no exits are found so wanderbehaviour returns null
+			// for some reason, possibly engine problem
+			map.moveActor(actor, spawnLocation);
 			actor.setVisibility(true);
 			result = actor + " SPAWNED IN MAP! KILL HER!";
 		}
