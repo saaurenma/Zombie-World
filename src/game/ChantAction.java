@@ -29,7 +29,7 @@ public class ChantAction extends Action{
 		String[] zombieNames = {"Juaarg", "Baaaah", "Blazer", "Plunger", "Slumper"};
 
 		
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i <= 5; i++) {
 			Zombie newZombie = new Zombie(zombieNames[i]);
 			Location newLocation = spawnLocations.get(i);
 			

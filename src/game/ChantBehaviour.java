@@ -23,7 +23,7 @@ public class ChantBehaviour implements Behaviour {
 		ArrayList<Location> zombieLocations =  new ArrayList<Location>();
 
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i <= 5; i++) {
 			Location spawnLocation = null;
 
 			boolean validCoordinate = false;
