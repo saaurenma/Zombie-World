@@ -16,7 +16,7 @@ public class ChantBehaviour implements Behaviour {
 		
 		ArrayList<Location> zombieLocations =  new ArrayList<Location>();
 
-		
+
 		for (int i = 0; i < 4; i++) {
 			Location spawnLocation = null;
 
@@ -45,7 +45,7 @@ public class ChantBehaviour implements Behaviour {
 			
 		}
 		
-		if (actor.getTurns() % 10 == 0) {
+		if (actor.getTurns() % 10 == 0 && actor.getVisible()) {
 			return new ChantAction(zombieLocations);
 		}
 		

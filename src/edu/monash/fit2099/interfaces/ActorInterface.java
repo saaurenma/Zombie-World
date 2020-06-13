@@ -11,4 +11,8 @@ public interface ActorInterface {
 	// used to avoid downcasting
 	public default int getTurns() {
 		return 0;};
+		
+	public default void setVisibility(boolean visible) {};
+	public default boolean getVisible() {
+		return false;};
 }

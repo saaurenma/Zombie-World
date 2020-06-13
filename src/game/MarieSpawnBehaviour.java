@@ -15,9 +15,14 @@ public class MarieSpawnBehaviour implements Behaviour {
 	public Action getAction(Actor actor, GameMap map) {
 		double chance = Math.random();
 		
-		if (chance < 0.5) {
-			System.out.println("here");
-			return new MarieSpawnAction(getRandEdgeLocation(map));
+		
+				
+		if (!actor.getVisible() && (chance < 0.05)) {
+			return new MarieSpawnAction(getRandEdgeLocation(map),true);
+		}
+		
+		else if (actor.getTurns() % 30 == 0 && actor.isConscious()) {
+			return new MarieSpawnAction(getRandEdgeLocation(map),false);
 		}
 
 		

@@ -7,11 +7,13 @@ import edu.monash.fit2099.engine.Location;
 
 public class MarieSpawnAction extends Action{
 	
-	Location spawnLocation;
+	private Location spawnLocation;
+	private boolean toSpawn;
+
 	
-	
-	public MarieSpawnAction(Location randEdgeLocation) {
+	public MarieSpawnAction(Location randEdgeLocation, boolean toSpawn) {
 		this.spawnLocation = randEdgeLocation;
+		this.toSpawn = toSpawn;
 	}
 
 	@Override
@@ -19,17 +21,15 @@ public class MarieSpawnAction extends Action{
 		
 		String result = actor + " SPAWNED IN MAP! KILL HER!";
 		
-		if (map.contains(actor)) {
-			if (actor.getTurns() % 30 == 0) {
-				map.removeActor(actor);
-			}
-		}
-		else if (!map.contains(actor)){
-			
-			map.addActor(actor, spawnLocation);
-			
+		if (!this.toSpawn) {
+			actor.setVisibility(false);
+			map.moveActor(actor, spawnLocation);
 		}
 		
+		else {
+			actor.setVisibility(true);
+			map.moveActor(actor, spawnLocation);
+		}
 		
 		return result;
 	}
