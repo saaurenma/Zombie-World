@@ -59,11 +59,6 @@ public class Zombie extends ZombieActor {
 		zombieLegs = 2;
 	}
 	
-	public Zombie(String name,char displayChar, int hitpoints) {
-		super(name, displayChar, hitpoints, ZombieCapability.UNDEAD);
-		zombieArms = 2;
-		zombieLegs = 2;
-	}
 
 
 	@Override

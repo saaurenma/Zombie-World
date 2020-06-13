@@ -13,7 +13,7 @@ import edu.monash.fit2099.engine.GameMap;
  * @author Saauren
  *
  */
-public class MamboMarie extends Zombie{
+public class MamboMarie extends ZombieActor{
 	
 	private int marieTurns = 0;
 	
@@ -30,7 +30,7 @@ public class MamboMarie extends Zombie{
 	 * normal zombie
 	 */
 	public MamboMarie(boolean visible) {
-		super("Mambo Marie", 'M', 130);
+		super("Mambo Marie", 'M', 130, ZombieCapability.UNDEAD);
 		
 		this.setVisibility(visible);
 		
