@@ -8,7 +8,11 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
-
+/***
+ * Defines the behaviour of how mambo Marie will spawn (appear) into map
+ * @author Saauren
+ *
+ */
 public class MarieSpawnBehaviour implements Behaviour {
 
 	@Override
@@ -30,6 +34,13 @@ public class MarieSpawnBehaviour implements Behaviour {
 	}
 	
 	
+	/***
+	 * Computes a random location on the top edge of the map where MamboMarie
+	 * will spawn
+	 * 
+	 * @param map The gamemap that was passed into getAction
+	 * @return location the random location on the edge
+	 */
 	private Location getRandEdgeLocation(GameMap map){
 		
 		boolean isValidLocation = false;
