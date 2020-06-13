@@ -7,6 +7,12 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
+/***
+ * Defines an Action of chanting and spawning Zombies
+ * 
+ * @author Saauren
+ *
+ */
 public class ChantAction extends Action{
 	
 	ArrayList<Location> spawnLocations;

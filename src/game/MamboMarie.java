@@ -8,6 +8,11 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.DoNothingAction;
 import edu.monash.fit2099.engine.GameMap;
 
+/***
+ * Implements MamboMarie as a child class of Zombie
+ * @author Saauren
+ *
+ */
 public class MamboMarie extends Zombie{
 	
 	private int marieTurns = 0;
@@ -18,14 +23,12 @@ public class MamboMarie extends Zombie{
 	private Behaviour[] behaviours = {new MarieSpawnBehaviour(), 
 			new ChantBehaviour(),
 			new WanderBehaviour()};
+	private boolean visible;
 	
 	/**
 	 * Constructor for MamboMarie, starts with 30 more hitpoints than a
 	 * normal zombie
 	 */
-	
-	private boolean visible;
-	
 	public MamboMarie(boolean visible) {
 		super("Mambo Marie", 'M', 130);
 		
@@ -33,6 +36,11 @@ public class MamboMarie extends Zombie{
 		
 	}
 	
+	/***
+	 * Sets the visibility of MamboMarie
+	 * 
+	 * @param visible Whether MamboMarie is visible or not
+	 */
 	public void setVisibility(boolean visible) {
 		
 		if (visible == false) {
@@ -48,15 +56,30 @@ public class MamboMarie extends Zombie{
 		
 	}
 	
+	/***
+	 * Returns if MamboMarie is cvisible
+	 * 
+	 * @return visible True if visible, false if not
+	 */
 	public boolean getVisible() {
 		return this.visible;
 	}
 
-	
+	/***
+	 * 
+	 * Sets the number of turns that MamboMarie has gone through
+	 * 
+	 * @param turns The number of turns
+	 */
 	public void setTurns(int turns) {
 		marieTurns = turns; 
 	}
 	
+	/***
+	 * Returns how many turns that MamboMarie has gone through
+	 * 
+	 * @return marieTurns The number of turns  MamboMarie has gone through
+	 */
 	public int getTurns() {
 		return marieTurns;
 	}

@@ -8,7 +8,13 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
-
+/**
+ * Defines a behaviour of chanting, passes an ArrayList of
+ * spawn locations for the new Zombies to be created to ChantAction
+ * 
+ * @author Saauren
+ *
+ */
 public class ChantBehaviour implements Behaviour {
 
 	@Override

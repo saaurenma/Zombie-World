@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 /***
- * Implements HarvestAction
+ * Implements an Action where an Actor can harvest a crop
  * @author Saauren
  *
  */
@@ -16,6 +16,7 @@ public class HarvestAction extends Action{
 	Location harvestLocation;
 
 	/***
+	 * Constructor for HarvestAction
 	 * 
 	 * @param crop the crop to be harvested
 	 * @param location the location of the crop

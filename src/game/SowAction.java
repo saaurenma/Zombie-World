@@ -5,11 +5,22 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
+/***
+ * Defines the Action of sowing a Crop
+ * 
+ * @author Saauren
+ *
+ */
 public class SowAction extends Action {
+	
 	
 	Location sowLocation;
 
-	
+	/***
+	 * Constructor for a SowAction
+	 * 
+	 * @param location the location where the crop is to be sowed
+	 */
 	public SowAction(Location location) {
 		this.sowLocation = location;
 	}

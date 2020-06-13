@@ -5,10 +5,19 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Weapon;
 import edu.monash.fit2099.engine.WeaponItem;
-
+/***
+ * Defines an Action of a weapon being crafted
+ * 
+ * @author Saauren
+ *
+ */
 public class CraftAction extends Action{
 	WeaponItem weaponToBeCrafted;
 	
+	/***
+	 * Constructor for CraftAction
+	 * @param weapon The weapon to be crafted
+	 */
 	public CraftAction(WeaponItem weapon) {
 		this.weaponToBeCrafted = weapon;
 	}

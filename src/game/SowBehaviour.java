@@ -13,10 +13,14 @@ import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
+/***
+ * Defines the behaviour of Sowing
+ * 
+ * @author Saauren
+ *
+ */
 public class SowBehaviour implements Behaviour {
 	Random rand = new Random();
-
-
 	
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
