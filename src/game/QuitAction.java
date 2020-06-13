@@ -23,7 +23,7 @@ public class QuitAction extends Action {
 			System.out.println("Game was quit prematurely");
 		}
 		System.out.println();
-		System.exit(0);
+			System.exit(0);
 		return null;
 	}
 
@@ -38,45 +38,4 @@ public class QuitAction extends Action {
 		return "q";
 	}
 	
-	private boolean checkIfHumansAlive(GameMap map) {
-		int xMax = map.getXRange().max();
-		int yMax = map.getYRange().max();
-		
-		for (int x = map.getXRange().min(); x<xMax; x++) {
-			for (int y = map.getYRange().min(); y<yMax; y++) {
-				
-				if (!map.isAnActorAt(map.at(x, y))) {
-					continue;
-				}
-				
-				Actor actorAtLocation = (map.at(x, y)).getActor();
-				if ((actorAtLocation instanceof Human) && ((map.at(x, y)).getActor().hasCapability(ZombieCapability.ALIVE))){
-					return true;
-				}
-			}
-		}
-		
-		return false;
-	}
-	
-	private boolean checkIfZombiesAlive(GameMap map) {
-		int xMax = map.getXRange().max();
-		int yMax = map.getYRange().max();
-		
-		for (int x = map.getXRange().min(); x<xMax; x++) {
-			for (int y = map.getYRange().min(); y<yMax; y++) {
-				
-				if (!map.isAnActorAt(map.at(x, y))) {
-					continue;
-				}
-				
-				Actor actorAtLocation = (map.at(x, y)).getActor();
-				if ((actorAtLocation instanceof Zombie) && ((map.at(x, y)).getActor().hasCapability(ZombieCapability.UNDEAD))){
-					return true;
-				}
-			}
-		}
-		
-		return false;
-	}
 }
