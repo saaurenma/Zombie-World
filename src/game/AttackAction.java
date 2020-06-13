@@ -78,6 +78,8 @@ public class AttackAction extends Action {
 			}
 			else if (!checkIfZombiesAlive(map)) {
 				actor.addCapability(WinStateCapability.WIN);
+				System.out.println("Player wins");
+				System.exit(0);
 			}
 			
 			
