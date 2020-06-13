@@ -117,7 +117,7 @@ public class Application {
 		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
 		gameMap.at(62, 12).addActor(new Zombie("Aaargh"));	
-		gameMap.at(0,13).addActor(new MamboMarie(true));	
+		gameMap.at(0,13).addActor(new MamboMarie(false));	
 
 		
 		gameMap2.at(20, 16).addActor(new Zombie("Shambler"));
